@@ -11,6 +11,13 @@ const reducer = (state, { type, payload }) => {
         ...state,
         todos: newTodos
       };
+    case "UPDATE_TODO":
+      return {
+        ...state,
+        todos: state.todos.map((todo, index) =>
+          index === payload ? { ...todo, complete: !todo.complete } : todo
+        )
+      };
     default:
       return state;
   }
@@ -42,8 +49,17 @@ const App = () => {
       {todos.length > 0 ? (
         <ul>
           {" "}
-          {todos.map((todo, key) => (
-            <li key={key}>{todo.task}</li>
+          {todos.map((todo, index) => (
+            <li key={index}>
+              {todo.task}{" "}
+              <input
+                type="checkbox"
+                checked={todo.complete}
+                onChange={(e) =>
+                  dispatch({ type: "UPDATE_TODO", payload: index })
+                }
+              />
+            </li>
           ))}
         </ul>
       ) : (
