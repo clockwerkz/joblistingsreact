@@ -4,8 +4,9 @@ import "./App.css";
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case "ADD":
+      let newTask = { task: payload, complete: false };
       const newTodos = [...state.todos];
-      newTodos.push(payload);
+      newTodos.push(newTask);
       return {
         ...state,
         todos: newTodos
@@ -17,7 +18,7 @@ const reducer = (state, { type, payload }) => {
 
 const App = () => {
   const [{ todos }, dispatch] = useReducer(reducer, {
-    todos: ["Wash the car"]
+    todos: [{ task: "Wash the car", complete: false }]
   });
   const [input, setInput] = useState("");
 
@@ -26,6 +27,8 @@ const App = () => {
     dispatch({ type: "ADD", payload: input });
     setInput("");
   };
+
+  const handleTodo = (index) => {};
 
   return (
     <div>
@@ -40,7 +43,7 @@ const App = () => {
         <ul>
           {" "}
           {todos.map((todo, key) => (
-            <li key={key}>{todo}</li>
+            <li key={key}>{todo.task}</li>
           ))}
         </ul>
       ) : (
