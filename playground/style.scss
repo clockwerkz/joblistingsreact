@@ -74,6 +74,27 @@ body {
     }
 }
 
+.search {
+    padding: 0 12rem;
+    &-bar {
+        background-image: url('../src/images/backgroundImg.png');
+        background-position: center;
+        background-size: cover;
+        height: 138px;
+    }
+    &-body {
+        display: flex;
+        margin-top: 4.2rem;
+    }
+    &-criteria {
+        width: 35%;
+    }
+    &-results {
+        width: 65%;
+    }
+}
+
+
 .material-icons {
     font-size: 1.5rem;
     margin: 0 0.4rem;
