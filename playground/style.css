@@ -205,4 +205,75 @@ body {
   font-size: 1.5rem;
   margin: 0 0.4rem;
 }
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'arial', sans-serif;
+  background: #F6F7FB;
+  font-size: 1rem;
+}
+
+.search-option {
+  padding-top: 0.1rem;
+  color: #334680;
+  font-size: 1.4rem;
+  font-weight: 600;
+  position: relative;
+  padding-left: 2.8rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.search-option input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #F6F7FB;
+  border: 1px solid #B9BDCF;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border-radius: 2px;
+}
+
+.search-option input:checked ~ .checkmark {
+  background: #1E86FF;
+  border-radius: 2px;
+}
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.search-option input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.search-option .checkmark:after {
+  left: 4px;
+  top: 0px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
 /*# sourceMappingURL=style.css.map */
