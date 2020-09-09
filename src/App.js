@@ -38,59 +38,59 @@ const App = () => {
   const handleTodo = (index) => {};
 
   return (
-    <section class="search">
-        <div class="search-bar">
-            <div class="search-bar__form-input">
-                <i class="material-icons">work_outline</i>
-                <input type="text" class="search-bar__input" placeholder="Title, companies, expertise or benefits" />
-                <button class="btn">Search</button>
+    <section className="search">
+        <div className="search-bar">
+            <div className="search-bar__form-input">
+                <i className="material-icons">work_outline</i>
+                <input type="text" className="search-bar__input" placeholder="Title, companies, expertise or benefits" />
+                <button className="btn">Search</button>
             </div>
             
         </div>
-        <div class="search-body">
+        <div className="search-body">
             
-          <aside class="search-criteria">
-              <label class="search-option">Full time
+          <aside className="search-criteria">
+              <label className="search-option">Full time
                   <input type="checkbox" />
-                  <span class="checkmark"></span>
+                  <span className="checkmark"></span>
               </label>
-              <h3 class="search__subtitle">Location</h3>
-              <div class="search-bar__form-input">
-                  <i class="material-icons">public</i>
-                  <input type="text" class="search-bar__input" placeholder="City, state, zip code or country" />
+              <h3 className="search__subtitle">Location</h3>
+              <div className="search-bar__form-input">
+                  <i className="material-icons">public</i>
+                  <input type="text" className="search-bar__input" placeholder="City, state, zip code or country" />
               </div>
-              <div class="search__cities">
-                <label class="search-option city">London
+              <div className="search__cities">
+                <label className="search-option city">London
                     <input type="checkbox" />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
-                <label class="search-option city">Amsterdam
+                <label className="search-option city">Amsterdam
                     <input type="checkbox" />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
-                <label class="search-option city">New York
+                <label className="search-option city">New York
                     <input type="checkbox" />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
-                <label class="search-option city">Berlin
+                <label className="search-option city">Berlin
                     <input type="checkbox" />
-                    <span class="checkmark"></span>
+                    <span className="checkmark"></span>
                 </label>
               </div>
           </aside>
 
-          <main class="search-results">
-              <div class="card">
-                  <div class="card__img">not found</div>
-                      <div class="card__body">
-                          <div class="card__info">
-                              <h2 class="card__company">New York University</h2>
-                              <h1 class="card__position">Front-End Software Engineer</h1>
-                              <h3 class="card__highlight">Full time</h3>
+          <main className="search-results">
+              <div className="card">
+                  <div className="card__img">not found</div>
+                      <div className="card__body">
+                          <div className="card__info">
+                              <h2 className="card__company">New York University</h2>
+                              <h1 className="card__position">Front-End Software Engineer</h1>
+                              <h3 className="card__highlight">Full time</h3>
                           </div>
-                          <ul class="card__tags">
-                              <li class="card__tag"><i class="material-icons">public</i> New York</li>
-                              <li class="card__tag"><i class="material-icons">access_time</i> 5 days ago</li>
+                          <ul className="card__tags">
+                              <li className="card__tag"><i className="material-icons">public</i> New York</li>
+                              <li className="card__tag"><i className="material-icons">access_time</i> 5 days ago</li>
                           </ul>
                   </div> 
               </div> 

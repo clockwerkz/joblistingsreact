@@ -8,10 +8,10 @@
     box-sizing: border-box;
 }
 html { 
+    font-family: 'Poppins', sans-serif;
     font-size: 62.5%; 
 } 
 body {
-    font-family: 'Poppins', sans-serif;
     background-color: #F6F7FB;
 }
 
@@ -164,15 +164,6 @@ body {
     font-size: 1.5rem;
 }
 
-html {
-    font-size: 62.5%;
-  }
-  body {
-    font-family: 'arial', sans-serif;
-    background: #F6F7FB;
-    font-size: 1rem;
-  }
-  
   .search-option {
     padding-top: 0.1rem;
     color: #334680;
