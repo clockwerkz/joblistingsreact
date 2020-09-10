@@ -1,6 +1,8 @@
 import React, { useReducer, useState } from "react";
 import "./sass/main.scss";
 
+import SearchBar from './components/SearchBar';
+
 const reducer = (state, { type, payload }) => {
   switch (type) {
     case "ADD":
@@ -42,10 +44,9 @@ const App = () => {
         <div className="search-bar">
             <div className="search-bar__form-input">
                 <i className="material-icons">work_outline</i>
-                <input type="text" className="search-bar__input" placeholder="Title, companies, expertise or benefits" />
+                <SearchBar placeholder="Title, companies, expertise or benefits" />
                 <button className="btn">Search</button>
-            </div>
-            
+            </div> 
         </div>
         <div className="search-body">
             
@@ -57,7 +58,7 @@ const App = () => {
               <h3 className="search__subtitle">Location</h3>
               <div className="search-bar__form-input">
                   <i className="material-icons">public</i>
-                  <input type="text" className="search-bar__input" placeholder="City, state, zip code or country" />
+                  <SearchBar placeholder="City, state, zip code or country" />
               </div>
               <div className="search__cities">
                 <label className="search-option city">London
