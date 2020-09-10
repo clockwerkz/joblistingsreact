@@ -7,8 +7,6 @@ import Cities from './components/Cities';
 import CheckBox from './components/CheckBox';
 import Card from './components/Card';
 
-
-
 const App = () => {
   const [state, dispatch] = useReducer(reducer, {
     searchText: "",
