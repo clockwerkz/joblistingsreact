@@ -1,8 +1,8 @@
 import React from 'react';
 
-const CheckBox = ({ label, value, toggle }) => {
+const CheckBox = ({ label, value, toggle, cityClass=false }) => {
     return (
-        <label className="search-option">{label}
+        <label className={cityClass ?"search-option city":"search-option"}>{label}
             <input type="checkbox" 
                 checked={value}
                 onChange={()=>toggle(label)}

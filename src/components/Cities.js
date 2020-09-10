@@ -1,16 +1,18 @@
 import React from 'react';
+import CheckBox from './CheckBox';
 
 const Cities = ({ cities, toggleCity }) => {
     const cityNames = Object.keys(cities);
     return (
         <div className="search__cities">
             {cityNames.map(cityName => (
-            <label key={cityName} className="search-option city">{cityName}
-                <input type="checkbox" checked={cities[cityName]} onChange={()=>toggleCity(cityName)}/>
-                <span className="checkmark"></span>
-            </label>
-            ))}
-
+            <CheckBox 
+                cityClass={true}
+                key={cityName} 
+                label={cityName} 
+                value={cities[cityName]}
+                toggle={toggleCity} 
+            />))}
         </div>
     )
 }
