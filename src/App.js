@@ -1,43 +1,13 @@
 import React, { useReducer, useState } from "react";
 import "./sass/main.scss";
+import reducer from './store/reducer';
 
 import SearchBar from './components/SearchBar';
 import Cities from './components/Cities';
 import CheckBox from './components/CheckBox';
 import Card from './components/Card';
 
-const reducer = (state, { type, payload }) => {
-  switch (type) {
-    case "UPDATE_SEARCH_TEXT":
-      return {
-        ...state,
-        searchText : payload
-      };
-    case "UPDATE_LOCATION_TEXT":
-      return {
-        ...state,
-        locationText: payload
-      };
-    case "TOGGLE_FULLTIME":
-      return {
-        ...state,
-        ["Full Time"] : !state["Full Time"]
-      }
-    case "TOGGLE_CITY":
-      let currentCitySelection = state.cities[payload];
-      let cities = { ...state.cities };
-      for (let city in cities) {
-        cities[city] = false;
-      }
-      cities[payload] = !currentCitySelection;
-      return {
-        ...state,
-          cities
-      }
-    default:
-      return state;
-  }
-};
+
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, {
