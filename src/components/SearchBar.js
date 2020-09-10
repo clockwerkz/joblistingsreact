@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-const SearchBar = ({ placeholder, initialValue="" }) => {
-    const [value, setValue] = useState(initialValue);
+const SearchBar = ({ placeholder, inputValue, updateInputValue }) => {
     return (
         <input 
             type="text" 
             className="search-bar__input" 
             placeholder={placeholder} 
-            value={value}
-            onChange={(e)=> setValue(e.target.value)}
+            value={inputValue}
+            onChange={(e)=> updateInputValue(e.target.value)}
         />
     )
 }
