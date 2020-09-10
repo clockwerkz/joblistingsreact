@@ -24,10 +24,12 @@ const reducer = (state, { type, payload }) => {
         ["Full Time"] : !state["Full Time"]
       }
     case "TOGGLE_CITY":
-      let cities = {
-        ...state.cities,
-        [payload] : !state.cities[payload]
+      let currentCitySelection = state.cities[payload];
+      let cities = { ...state.cities };
+      for (let city in cities) {
+        cities[city] = false;
       }
+      cities[payload] = !currentCitySelection;
       return {
         ...state,
           cities
