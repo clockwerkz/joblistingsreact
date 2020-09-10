@@ -48,6 +48,7 @@ const App = () => {
       "New York" : false,
       "Berlin" : false
     },
+    page: 0,
     results: []
   });
 
@@ -58,6 +59,13 @@ const App = () => {
   const toggleCity = (city) => dispatch({type: "TOGGLE_CITY", payload : city});
 
   const toggleFullTime = () => dispatch({ type: "TOGGLE_FULLTIME"});
+
+  const searchJobs = () => {
+    const url = `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?description=${state.searchText}&location=New+York`;
+    fetch(url)
+    .then(res => res.json())
+    .then(data => console.log(data));
+  }
 
   const { london } = state.cities;
   return (
@@ -70,7 +78,7 @@ const App = () => {
                   inputValue={state.searchText}
                   updateInputValue={updateSearchInput}
                 />
-                <button className="btn">Search</button>
+                <button className="btn" onClick={searchJobs}>Search</button>
             </div> 
         </div>
         <div className="search-body">
