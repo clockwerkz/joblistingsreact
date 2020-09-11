@@ -14,7 +14,11 @@ const job = {
     company_logo: "https://jobs.github.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBbE9KIiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--a30d608a910769a14438f7e0d7f3a673ca961499/HTC%20logo.jpg"
     };
 
-    const Card = (props) => {
+const Card = (props) => {
+    
+    const timeElapsed = new Date().getTime() - new Date(job.created_at).getTime();
+    const difference_in_days = Math.floor(timeElapsed / (1000 * 3600 * 24));
+    
     return (
         <div className="card">
             {job.company_logo ? <img src={job.company_logo} className="card__img" /> : <div className="card__img">not found</div>}
@@ -26,7 +30,7 @@ const job = {
                     </div>
                     <ul className="card__tags">
     <li className="card__tag"><i className="material-icons">public</i>{job.location}</li>
-                        <li className="card__tag"><i className="material-icons">access_time</i> 5 days ago</li>
+                        <li className="card__tag"><i className="material-icons">access_time</i>{difference_in_days} days ago</li>
                     </ul>
             </div> 
         </div> 
