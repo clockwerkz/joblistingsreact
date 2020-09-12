@@ -1,1 +1,1 @@
-export const updateSearchInput = dispatch => text => dispatch({type: "UPDATE_SEARCH_TEXT", payload : text});
+//export const updateSearchInput =  text => dispatch({type: "UPDATE_SEARCH_TEXT", payload : text});
