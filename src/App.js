@@ -7,6 +7,10 @@ import Cities from './components/Cities';
 import CheckBox from './components/CheckBox';
 import Card from './components/Card';
 
+import { MyProvider } from './store/MyContext';
+import connect from './utilities/connect';
+import { updateSearchInput } from './store/actions';
+
 const App = () => {
   const [state, dispatch] = useReducer(reducer, {
     searchText: "",
@@ -39,40 +43,49 @@ const App = () => {
 
   const { london } = state.cities;
   return (
-    <section className="search">
-        <div className="search-bar">
-            <div className="search-bar__form-input">
-                <i className="material-icons">work_outline</i>
-                <SearchBar 
-                  placeholder="Title, companies, expertise or benefits" 
-                  inputValue={state.searchText}
-                  updateInputValue={updateSearchInput}
-                />
-                <button className="btn" onClick={searchJobs}>Search</button>
-            </div> 
-        </div>
-        <div className="search-body">
-            
-          <aside className="search-criteria">
-              <CheckBox label="Full Time"value={state["Full Time"]} toggle={toggleFullTime}/>
-              <h3 className="search__subtitle">Location</h3>
+    <MyProvider value={{state, dispatch}}>
+      <section className="search">
+          <div className="search-bar">
               <div className="search-bar__form-input">
-                  <i className="material-icons">public</i>
+                  <i className="material-icons">work_outline</i>
                   <SearchBar 
-                    placeholder="City, state, zip code or country" 
-                    inputValue={state.locationText}
-                    updateInputValue={updateLocationInput}
+                    placeholder="Title, companies, expertise or benefits" 
+                    inputValue={state.searchText}
+                    updateInputValue={updateSearchInput}
                   />
-              </div>
-              <Cities cities={state.cities} toggleCity={toggleCity} />
-          </aside>
+                  <button className="btn" onClick={searchJobs}>Search</button>
+              </div> 
+          </div>
+          <div className="search-body">
+              
+            <aside className="search-criteria">
+                <CheckBox label="Full Time"value={state["Full Time"]} toggle={toggleFullTime}/>
+                <h3 className="search__subtitle">Location</h3>
+                <div className="search-bar__form-input">
+                    <i className="material-icons">public</i>
+                    <SearchBar 
+                      placeholder="City, state, zip code or country" 
+                      inputValue={state.locationText}
+                      updateInputValue={updateLocationInput}
+                    />
+                </div>
+                <Cities cities={state.cities} toggleCity={toggleCity} />
+            </aside>
 
-          <main className="search-results">
-              <Card />
-          </main>
-        </div>
-    </section>
+            <main className="search-results">
+                <Card />
+            </main>
+          </div>
+      </section>
+    </MyProvider>
   );
 };
 
-export default App;
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateSearchInput : updateSearchInput(dispatch)
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App);
