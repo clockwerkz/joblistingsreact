@@ -6,10 +6,15 @@ const Details = ({results, match}) => {
     //TODO: Add a redirect if there is no id/param
     const job = results.find(job => job.id === id);
     console.log(job);
+    const { description } = job;
     return (
-        <div>
-            <h1>Details</h1>
-            <p>{id}</p>
+        <div className="details">
+            <aside className="details__action">
+
+            </aside>
+            <main className="details__info">
+                <div className="details__description" dangerouslySetInnerHTML={{__html : description}}></div>
+            </main>
         </div>
     )
 } 

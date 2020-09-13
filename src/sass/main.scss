@@ -19,6 +19,16 @@ a {
     text-decoration: none;
 }
 
+.title {
+    padding: 0 4rem;
+    font-weight: normal;
+    margin: 3.2rem 0;
+}
+
+.highlight {
+    font-weight: bold;
+}
+
 .card {
     background: #FFFFFF;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
@@ -235,6 +245,17 @@ a {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+  }
+
+  .details {
+      display: flex;
+      padding: 0 4rem;
+      &__action {
+          width: 20%;
+      }
+      &__info {
+          width: 80%;
+      }
   }
 
   @media screen and (max-width: 1100px) {

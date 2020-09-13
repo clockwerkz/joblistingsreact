@@ -12,6 +12,7 @@ const App = () => {
 
   return (
     <MyProvider>
+      <h1 className="title"><span className="highlight">Github</span> Jobs</h1>
       <Router>
         <Route path="/" exact component={Main} />
         <Route path="/:id" component={Details} />
