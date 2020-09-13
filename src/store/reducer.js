@@ -13,7 +13,7 @@ const reducer = (state, { type, payload }) => {
       case "TOGGLE_FULLTIME":
         return {
           ...state,
-          ["Full Time"] : !state["Full Time"]
+          fullTime : !state.fullTime
         }
       case "TOGGLE_CITY":
         let currentCitySelection = state.cities[payload];

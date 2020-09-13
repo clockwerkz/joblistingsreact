@@ -7,7 +7,7 @@ export const MyContext = createContext('');
 const initialState = {
     searchText: "",
     locationText: "",
-    "Full Time" : false,
+    fullTime : false,
     cities : {
       "London": false,
       "Amsterdam" : false,
@@ -21,16 +21,9 @@ const initialState = {
 const MyProvider = ({children}) => {
     const [state, dispatch] = useReducer(reducer, initialState);
 
-    const updateSearchInput =  text => dispatch({type: "UPDATE_SEARCH_TEXT", payload : text});
-
-    const updateLocationInput = (text) => dispatch({type: "UPDATE_LOCATION_TEXT", payload : text});
-  
-    const toggleCity = (city) => dispatch({type: "TOGGLE_CITY", payload : city});
-  
-    const toggleFullTime = () => dispatch({ type: "TOGGLE_FULLTIME"});
 
     return (
-        <MyContext.Provider value={{state, updateSearchInput, updateLocationInput, toggleCity, toggleFullTime}}>
+        <MyContext.Provider value={{state, dispatch }}>
             { children }
         </MyContext.Provider>
     )
