@@ -15,6 +15,10 @@ body {
     background-color: #F6F7FB;
 }
 
+a {
+    text-decoration: none;
+}
+
 .card {
     background: #FFFFFF;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.05);
@@ -26,11 +30,11 @@ body {
     &__body {
         display: flex;
         flex-direction: row;
+        width: 100%;
     }
     &__img {
         height: 90px;
         width: 90px;
-        background-color: #F2F2F2;
         border-radius: 4px;
         color: #BDBDBD;
         font-size: 0.75rem;
@@ -38,12 +42,16 @@ body {
         text-align: center;
         line-height: 90px;
         margin-right: 1.6rem;
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
     }
     &__info {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         align-items: flex-start;
+        flex: 1;
     }
     &__company {
        font-size: 1.2rem;
@@ -60,7 +68,13 @@ body {
         border: 1px solid #334680;
         border-radius: 4px;
     }
+    &__meta {
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+    }
     &__tags {
+        justify-self: flex-end;
         display: flex;
         list-style: none;
         display: flex;
@@ -266,6 +280,10 @@ body {
         &__position {
             font-size: 1.6rem;
             margin-bottom: 1.4rem;
+        }
+        &__meta {
+            align-items: flex-start;
+            flex-direction: column;
         }
         &__tags {
             margin-top: 2.6rem;
