@@ -1,4 +1,7 @@
 import React from 'react';
+import connect from '../utilities/connect';
+import { toggleCity } from '../store/actions';
+
 import CheckBox from './CheckBox';
 
 const Cities = ({ cities, toggleCity }) => {
@@ -17,5 +20,14 @@ const Cities = ({ cities, toggleCity }) => {
     )
 }
 
+const mapStateToProps = (state) => ({
+    cities : state.cities
+});
 
-export default Cities;
+const mapDispatchToProps = (dispatch) => ({
+    toggleCity : toggleCity(dispatch)
+})
+
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cities);

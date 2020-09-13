@@ -1,5 +1,11 @@
 const reducer = (state, { type, payload }) => {
     switch (type) {
+      case "UPDATE_TEXT":
+        const { field, text } = payload;
+        return {
+          ...state,
+          [field] : text
+        }
       case "UPDATE_SEARCH_TEXT":
         return {
           ...state,
@@ -25,6 +31,11 @@ const reducer = (state, { type, payload }) => {
         return {
           ...state,
             cities
+        }
+      case "UPDATE_DATA":
+        return {
+          ...state,
+          results : payload
         }
       default:
         return state;
