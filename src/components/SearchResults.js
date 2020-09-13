@@ -1,5 +1,6 @@
 import React from 'react';
 import connect from '../utilities/connect';
+import { Link } from 'react-router-dom';
 
 import Card from './Card';
 
@@ -8,7 +9,7 @@ const SearchResults = ({ results }) => {
         <main className="search-results">
             {results.length > 0 ? 
             (
-                results.map(card=>(<Card key={card.id} {...card}/>))
+                results.map(card=>(<Link to={card.id} key={card.id}><Card {...card}/></Link>))
             )
             :
             (<p>Search for jobs</p>)}
