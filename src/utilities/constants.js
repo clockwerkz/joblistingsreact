@@ -1,6 +1,6 @@
 const prod = {
     url: {
-        API_URL: 'https://jobs.github.com/positions.json?',
+        API_URL: 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?',
         }
    };
    const dev = {
