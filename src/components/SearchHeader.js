@@ -1,6 +1,7 @@
 import React from 'react';
 import connect from '../utilities/connect';
 import { updateSearchInput, updateResults } from '../store/actions';
+import { config } from '../utilities/constants';
 
 import SearchBar from './SearchBar';
 
@@ -14,7 +15,7 @@ const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, upd
             const cityNames = Object.keys(cities);
             cityName = cityNames.reduce((saved, current) => cities[current] ? current : saved, '');
         }
-        let url = 'https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json?';
+        let url = config.url.API_URL;
         if (cityName!=='') {
             url+=`location=${cityName}`
         }
