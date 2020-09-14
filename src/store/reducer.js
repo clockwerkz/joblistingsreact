@@ -35,7 +35,10 @@ const reducer = (state, { type, payload }) => {
       case "UPDATE_DATA":
         return {
           ...state,
-          results : payload
+          results : payload,
+          page: 1,
+          start: 0,
+          end: 5
         }
       default:
         return state;

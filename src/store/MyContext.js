@@ -14,7 +14,9 @@ const initialState = {
       "New York" : false,
       "Berlin" : false
     },
-    page: 0,
+    start: 0,
+    end: 5,
+    page: 1,
     results: []
 };
 

@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 import Card from './Card';
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, start, end }) => {
     return (
         <main className="search-results">
             {results.length > 0 ? 
             (
-                results.map(card=>(<Link to={card.id} key={card.id}><Card {...card}/></Link>))
+                results.slice(start, end).map(card=>(<Link to={card.id} key={card.id}><Card {...card}/></Link>))
             )
             :
             (<p>Search for jobs</p>)}
@@ -19,7 +19,10 @@ const SearchResults = ({ results }) => {
 }
 
 const mapStateToProps = (state) => ({
-    results : state.results
+    results : state.results,
+    start: state.start,
+    end: state.end,
+    page: state.page
 })
 
 
