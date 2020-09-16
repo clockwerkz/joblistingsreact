@@ -13,9 +13,14 @@ const SearchResults = ({ results, start, end, updatePage }) => {
     const paginateProps = {
         pageCount : numberOfPages,
         containerClassName : 'details__pagination',
-        pageClassName : 'details__pagination-number',
-        activeClassName: 'details__pagination-number--selected',
+        pageLinkClassName : 'details__pagination-number',
+        activeLinkClassName: 'details__pagination-number--selected',
+        previousLinkClassName: 'details__pagination-prev',
+        nextLinkClassName: 'details__pagination-next',
         pageRangeDisplayed : 2,
+        previousLabel: '<<',
+        nextLabel: '>>',
+        disabledClassName: 'details__pagination--disabled',
         onPageChange : updatePage
     }
     return (

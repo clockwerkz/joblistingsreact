@@ -265,10 +265,18 @@ a {
         justify-content: flex-end;
         font-size: 1.5rem;
         color: #1E86FF;
+        &--disabled {
+            color: lightblue;
+        }
+        &-prev, &-next {
+           cursor: pointer;
+           
+        }
         &-number {
             padding: 0 0.5rem;
             margin: 0 0.25rem;
             border: 1px solid #1E86FF;
+            cursor: pointer;
             &--selected {
                 background-color: #1E86FF;
                 color: white;
