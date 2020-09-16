@@ -5,18 +5,22 @@ import ReactPaginate from 'react-paginate';
 
 import Card from './Card';
 
-const SearchResults = ({ results, start, end }) => {
-    const handlePaginationClick = (output) => console.log(output);
+import { updatePage } from '../store/actions';
+
+const SearchResults = ({ results, start, end, updatePage }) => {
+
+    let numberOfPages = Math.ceil(results.length / 5);
     const paginateProps = {
-        pageCount : 7,
+        pageCount : numberOfPages,
         containerClassName : 'details__pagination',
         pageClassName : 'details__pagination-number',
+        activeClassName: 'details__pagination-number--selected',
         pageRangeDisplayed : 2,
-        onPageChange : handlePaginationClick
+        onPageChange : updatePage
     }
     return (
         <main className="search-results">
-            <ReactPaginate {...paginateProps}/>
+            {results.length > 5 && <ReactPaginate {...paginateProps}/>}
             {results.length > 0 ? 
             (
                 results.slice(start, end).map(card=>(<Link to={card.id} key={card.id}><Card {...card}/></Link>))
@@ -35,5 +39,9 @@ const mapStateToProps = (state) => ({
     page: state.page
 })
 
+const mapDispatchToProps = (dispatch) => ({
+    updatePage : updatePage(dispatch)
+});
 
-export default connect(mapStateToProps)(SearchResults);
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);
