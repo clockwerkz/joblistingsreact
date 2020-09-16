@@ -28,7 +28,7 @@ const SearchResults = ({ results, start, end, updatePage }) => {
             {results.length > 5 && <ReactPaginate {...paginateProps}/>}
             {results.length > 0 ? 
             (
-                results.slice(start, end).map(card=>(<Link to={card.id} key={card.id}><Card {...card}/></Link>))
+                results.slice(start, end).map((card,index)=>(<Card key={card.id} {...card} index={index}/>))
             )
             :
             (<p>Search for jobs</p>)}
