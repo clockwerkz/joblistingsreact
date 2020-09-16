@@ -6,6 +6,7 @@ export const MyContext = createContext('');
 
 const initialState = {
     searchText: "",
+    selectedJob: -1,
     locationText: "",
     fullTime : false,
     cities : {

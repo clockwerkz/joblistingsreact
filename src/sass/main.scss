@@ -257,7 +257,12 @@ a {
         padding-right: 2rem;
         font-size: 1.4rem;
         line-height: 2.1rem;
-        overflow: hidden;
+        & a {
+            display: inline-block;
+            width: 90%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
     &__pagination {
         list-style: none;

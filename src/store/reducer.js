@@ -32,6 +32,16 @@ const reducer = (state, { type, payload }) => {
           ...state,
             cities
         }
+      case "SELECT_JOB":
+        return {
+          ...state,
+          selectedJob : payload
+        }
+      case "CLEAR_JOB":
+        return {
+          ...state,
+          selectedJob : -1
+        }
       case "UPDATE_DATA":
         return {
           ...state,

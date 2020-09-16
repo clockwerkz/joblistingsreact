@@ -1,12 +1,14 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
-const Card = ({ id, type, url, created_at, company,company_logo, company_url, location, title, index }) => {
+import connect from '../utilities/connect';
+import { selectJob } from '../store/actions';
+
+const Card = ({ id, type, url, created_at, company,company_logo, company_url, location, title, index, selectJob }) => {
     
     const timeElapsed = new Date().getTime() - new Date(created_at).getTime();
     const difference_in_days = Math.floor(timeElapsed / (1000 * 3600 * 24));
     const handleClick = () => {
-        console.log(index);
+        selectJob(index);
     }
     
     return (
@@ -30,4 +32,8 @@ const Card = ({ id, type, url, created_at, company,company_logo, company_url, lo
     )
 }
 
-export default Card;
+const mapDispatchToProps = (dispatch) => ({
+    selectJob : selectJob(dispatch)
+})
+
+export default connect(null, mapDispatchToProps)(Card);

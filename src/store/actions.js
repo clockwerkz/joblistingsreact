@@ -11,3 +11,7 @@ export const toggleFullTime = dispatch => () => dispatch({ type: "TOGGLE_FULLTIM
 export const updateResults = dispatch => (data) => dispatch({type: "UPDATE_DATA", payload : data})
 
 export const updatePage = dispatch => ({ selected }) => dispatch({type : "UPDATE_PAGE", payload : selected})
+
+export const clearJob = dispatch => () => dispatch({type: "CLEAR_JOB"});
+
+export const selectJob = dispatch => (job) => dispatch({type:"SELECT_JOB", payload : job});

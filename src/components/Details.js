@@ -1,11 +1,10 @@
 import React from 'react';
 import connect from '../utilities/connect';
-import { Link } from "react-router-dom";
+import { clearJob } from '../store/actions';
 
-const Details = ({results, match}) => {
-    const { id } = match.params ? match.params : 'No Parameter Passed';
-    //TODO: Add a redirect if there is no id/param
-    const job = results.find(job => job.id === id);
+const Details = ({results, clearJob, selectedJob}) => {
+
+    const job = results[selectedJob];
     console.log(job);
     const { description, company, company_logo, location, title, type, how_to_apply, created_at } = job;
 
@@ -14,7 +13,7 @@ const Details = ({results, match}) => {
     return (
         <div className="details">
             <aside className="details__action">
-                <Link className="details__back" to="/"><i className="material-icons">trending_flat</i> Back to Search</Link>
+                <p className="details__back" onClick={clearJob}><i className="material-icons">trending_flat</i> Back to Search</p>
                 <h2 className="details__subtitle">How to Apply</h2>
                 {how_to_apply ? (<div dangerouslySetInnerHTML={{__html: how_to_apply}}></div>):("")}
             </aside>
@@ -34,9 +33,14 @@ const Details = ({results, match}) => {
     )
 } 
 
+const mapDispatchToProps = (dispatch) => ({
+    clearJob : clearJob(dispatch)
+})
+
 const mapStateToProps = (state) => ({
-    results : state.results
+    results : state.results,
+    selectedJob : state.selectedJob
 })
 
 
-export default connect(mapStateToProps)(Details);
+export default connect(mapStateToProps, mapDispatchToProps)(Details);
