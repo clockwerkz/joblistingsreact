@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import connect from '../utilities/connect';
-import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate';
 
 import Card from './Card';
@@ -8,7 +7,7 @@ import Card from './Card';
 import { updatePage } from '../store/actions';
 
 const SearchResults = ({ results, start, end, updatePage }) => {
-
+    
     let numberOfPages = Math.ceil(results.length / 5);
     const paginateProps = {
         pageCount : numberOfPages,
@@ -23,6 +22,11 @@ const SearchResults = ({ results, start, end, updatePage }) => {
         disabledClassName: 'details__pagination--disabled',
         onPageChange : updatePage
     }
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <main className="search-results">
             {results.length > 5 && <ReactPaginate {...paginateProps}/>}

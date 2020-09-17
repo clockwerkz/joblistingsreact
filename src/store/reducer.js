@@ -40,7 +40,7 @@ const reducer = (state, { type, payload }) => {
       case "CLEAR_JOB":
         return {
           ...state,
-          selectedJob : -1
+          selectedJob : ""
         }
       case "UPDATE_DATA":
         return {

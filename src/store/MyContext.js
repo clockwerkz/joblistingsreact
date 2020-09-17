@@ -6,7 +6,7 @@ export const MyContext = createContext('');
 
 const initialState = {
     searchText: "",
-    selectedJob: -1,
+    selectedJob: "",
     locationText: "",
     fullTime : false,
     cities : {
@@ -18,7 +18,8 @@ const initialState = {
     start: 0,
     end: 5,
     page: 1,
-    results: []
+    results: [],
+    urlPage : 0
 };
 
 const MyProvider = ({children}) => {

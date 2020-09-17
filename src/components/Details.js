@@ -1,15 +1,19 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import connect from '../utilities/connect';
 import { clearJob } from '../store/actions';
 
 const Details = ({results, clearJob, selectedJob}) => {
 
-    const job = results[selectedJob];
-    console.log(job);
+    const job = results.find(job => job.id === selectedJob);
     const { description, company, company_logo, location, title, type, how_to_apply, created_at } = job;
 
     const timeElapsed = new Date().getTime() - new Date(created_at).getTime();
     const difference_in_days = Math.floor(timeElapsed / (1000 * 3600 * 24));
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
+
     return (
         <div className="details">
             <aside className="details__action">

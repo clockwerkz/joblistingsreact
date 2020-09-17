@@ -8,7 +8,7 @@ const Card = ({ id, type, url, created_at, company,company_logo, company_url, lo
     const timeElapsed = new Date().getTime() - new Date(created_at).getTime();
     const difference_in_days = Math.floor(timeElapsed / (1000 * 3600 * 24));
     const handleClick = () => {
-        selectJob(index);
+        selectJob(id);
     }
     
     return (

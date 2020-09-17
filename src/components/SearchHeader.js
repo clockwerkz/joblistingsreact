@@ -1,24 +1,14 @@
 import React from 'react';
 import connect from '../utilities/connect';
 import { updateSearchInput, updateResults } from '../store/actions';
-import { config } from '../utilities/constants';
+import urlBuilder from '../utilities/urlBuilder';
 
 import SearchBar from './SearchBar';
 
-const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, updateResults }) => {
+const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, updateResults, page }) => {
     const searchJobs = () => {
-        let cityName = '';
         console.log("Searching...");
-        if (locationText!=='') {
-            cityName = locationText;
-        } else {
-            const cityNames = Object.keys(cities);
-            cityName = cityNames.reduce((saved, current) => cities[current] ? current : saved, '');
-        }
-        let url = config.url.API_URL;
-        if (cityName!=='') {
-            url+=`location=${cityName}`
-        }
+        let url = urlBuilder(cities, locationText, searchText, page);
         fetch(url)
         .then(res => res.json())
         .then(data => updateResults(data));
@@ -50,7 +40,8 @@ const mapStateToProps = (state) => {
     return {
         searchText : state.searchText,
         locationText : state.locationText,
-        cities : state.cities
+        cities : state.cities,
+        page : state.urlPage
     }
 }
 

@@ -7,7 +7,8 @@ import SearchResults from './SearchResults';
 import Details from './Details';
 
 const Main = ({ selectedJob }) => {
-    if (selectedJob === -1) {
+
+    if (selectedJob === "") {
         return (
             <section className="search">
                 <SearchHeader />
