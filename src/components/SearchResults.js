@@ -4,11 +4,19 @@ import ReactPaginate from 'react-paginate';
 
 import Card from './Card';
 
-import { updatePage } from '../store/actions';
-
-const SearchResults = ({ results, start, end, updatePage }) => {
+import { updatePage, fetchJobs } from '../store/actions';
+const SearchResults = ({ results, start, end, updatePage, cities, locationText, searchText, fetchJobs, urlPage }) => {
     
     let numberOfPages = Math.ceil(results.length / 5);
+    
+    const handlePageCick = ({ selected }) => {
+        if (selected + 1 === numberOfPages && numberOfPages % 10 === 0) {
+            console.log("End of current set of pages");
+            fetchJobs(cities, locationText, searchText, urlPage, false);
+        }
+        updatePage(selected);
+    }
+    
     const paginateProps = {
         pageCount : numberOfPages,
         containerClassName : 'details__pagination',
@@ -20,7 +28,7 @@ const SearchResults = ({ results, start, end, updatePage }) => {
         previousLabel: '<<',
         nextLabel: '>>',
         disabledClassName: 'details__pagination--disabled',
-        onPageChange : updatePage
+        onPageChange : handlePageCick
     }
 
     useEffect(() => {
@@ -36,7 +44,6 @@ const SearchResults = ({ results, start, end, updatePage }) => {
             )
             :
             (<p>Search for jobs</p>)}
-            
         </main>
     )
 }
@@ -45,11 +52,16 @@ const mapStateToProps = (state) => ({
     results : state.results,
     start: state.start,
     end: state.end,
-    page: state.page
+    cities : state.cities,
+    locationText : state.locationText,
+    searchText : state.searchText,
+    page : state.page,
+    urlPage : state.urlPage
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    updatePage : updatePage(dispatch)
+    updatePage : updatePage(dispatch),
+    fetchJobs : fetchJobs(dispatch)
 });
 
 

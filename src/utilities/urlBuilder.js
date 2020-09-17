@@ -1,6 +1,6 @@
 import { config } from '../utilities/constants';
 
-function urlBuilder(cities, locationText, searchText, page) {
+function urlBuilder(cities, locationText, searchText, urlPage) {
     let cityName = '';
     if (locationText!=='') {
         cityName = locationText;
@@ -15,7 +15,7 @@ function urlBuilder(cities, locationText, searchText, page) {
     if (searchText !== '') {
         url+=`&search=${searchText}`
     }
-    url+=`&page=${page}`
+    url+=`&page=${urlPage}`
     return url;
 }
 

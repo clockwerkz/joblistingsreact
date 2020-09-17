@@ -1,4 +1,5 @@
 const reducer = (state, { type, payload }) => {
+  let cities;
     switch (type) {
       case "UPDATE_TEXT":
         const { field, text } = payload;
@@ -12,8 +13,13 @@ const reducer = (state, { type, payload }) => {
           searchText : payload
         };
       case "UPDATE_LOCATION_TEXT":
+        cities = { ...state.cities };
+        for (let city in cities) {
+          cities[city] = false;
+        }
         return {
           ...state,
+          cities,
           locationText: payload
         };
       case "TOGGLE_FULLTIME":
@@ -23,14 +29,15 @@ const reducer = (state, { type, payload }) => {
         }
       case "TOGGLE_CITY":
         let currentCitySelection = state.cities[payload];
-        let cities = { ...state.cities };
+        cities = { ...state.cities };
         for (let city in cities) {
           cities[city] = false;
         }
         cities[payload] = !currentCitySelection;
         return {
           ...state,
-            cities
+            cities,
+            locationText : ''
         }
       case "SELECT_JOB":
         return {
@@ -42,13 +49,20 @@ const reducer = (state, { type, payload }) => {
           ...state,
           selectedJob : ""
         }
-      case "UPDATE_DATA":
+      case "NEW_DATA":
         return {
           ...state,
           results: payload,
           page: 0,
           start: 0,
-          end: 5
+          end: 5,
+          urlPage : 1
+        }
+      case "UPDATE_DATA":
+        return {
+          ...state,
+          results : state.results.concat(payload),
+          urlPage : state.urlPage + 1
         }
       case "UPDATE_PAGE":
         let page = payload;

@@ -1,17 +1,12 @@
 import React from 'react';
 import connect from '../utilities/connect';
-import { updateSearchInput, updateResults } from '../store/actions';
-import urlBuilder from '../utilities/urlBuilder';
+import { updateSearchInput, fetchJobs } from '../store/actions';
 
 import SearchBar from './SearchBar';
 
-const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, updateResults, page }) => {
+const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, urlPage,  fetchJobs }) => {
     const searchJobs = () => {
-        console.log("Searching...");
-        let url = urlBuilder(cities, locationText, searchText, page);
-        fetch(url)
-        .then(res => res.json())
-        .then(data => updateResults(data));
+        fetchJobs(cities, locationText, searchText, 0);
     }
 
     return (
@@ -32,7 +27,7 @@ const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, upd
 const mapDispatchToProps = (dispatch) => {
     return {
         updateSearchInput : updateSearchInput(dispatch),
-        updateResults : updateResults(dispatch)
+        fetchJobs : fetchJobs(dispatch)
     }
 }
 
@@ -41,7 +36,7 @@ const mapStateToProps = (state) => {
         searchText : state.searchText,
         locationText : state.locationText,
         cities : state.cities,
-        page : state.urlPage
+        urlPage : state.urlPage
     }
 }
 
