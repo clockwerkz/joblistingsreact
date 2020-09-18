@@ -49,6 +49,18 @@ const reducer = (state, { type, payload }) => {
           ...state,
           selectedJob : ""
         }
+      case "START_SEARCH":
+        return {
+          ...state,
+          results: [],
+          searchStatus: "Searching..."
+        }
+      case "NO_RESULTS":
+        return {
+          ...state,
+          results: [],
+          searchStatus: "No Results Found"
+        }
       case "NEW_DATA":
         return {
           ...state,

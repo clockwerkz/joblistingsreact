@@ -5,6 +5,7 @@ import reducer from './reducer';
 export const MyContext = createContext('');
 
 const initialState = {
+    searchStatus: "Search for jobs using the provided options",
     searchText: "",
     selectedJob: "",
     locationText: "",

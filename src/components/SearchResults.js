@@ -5,7 +5,7 @@ import ReactPaginate from 'react-paginate';
 import Card from './Card';
 
 import { updatePage, fetchJobs } from '../store/actions';
-const SearchResults = ({ results, start, end, updatePage, cities, locationText, searchText, fetchJobs, urlPage }) => {
+const SearchResults = ({ results, start, end, updatePage, cities, locationText, searchText, fetchJobs, urlPage, searchStatus }) => {
     
     let numberOfPages = Math.ceil(results.length / 5);
     
@@ -33,8 +33,16 @@ const SearchResults = ({ results, start, end, updatePage, cities, locationText, 
 
     useEffect(() => {
         window.scrollTo(0, 0)
-      }, [])
+    }, [])
 
+    let currentStatusClass;
+    switch (searchStatus) {
+        case "Searching...":
+            currentStatusClass = <p className="search-results__status searching">Searching...</p>;
+            break;
+        default: 
+            currentStatusClass = <p className="search-results__status">{searchStatus}</p>;
+    }
     return (
         <main className="search-results">
             {results.length > 5 && <ReactPaginate {...paginateProps}/>}
@@ -43,7 +51,7 @@ const SearchResults = ({ results, start, end, updatePage, cities, locationText, 
                 results.slice(start, end).map((card,index)=>(<Card key={card.id} {...card} index={index}/>))
             )
             :
-            (<p>Search for jobs</p>)}
+            (currentStatusClass)}
         </main>
     )
 }
@@ -56,7 +64,8 @@ const mapStateToProps = (state) => ({
     locationText : state.locationText,
     searchText : state.searchText,
     page : state.page,
-    urlPage : state.urlPage
+    urlPage : state.urlPage,
+    searchStatus : state.searchStatus
 })
 
 const mapDispatchToProps = (dispatch) => ({

@@ -170,9 +170,36 @@ a {
     }
     &-results {
         width: 65%;
+        &__status {
+            font-size: 2rem;
+            text-align: center;
+        }
     }
 }
 
+.searching {
+    animation-name: glow;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes glow {
+    0% {
+        opacity: 1;
+        color: #334680;
+    }
+
+    50% {
+        opacity: 0.40;
+        color: #1E86FF;
+    }
+
+    100% {
+        opacity: 1;
+        color: #334680;
+    }
+}
 .city {
     margin-bottom: 1.9rem;
 }
@@ -234,6 +261,11 @@ a {
   .search-option input:checked ~ .checkmark:after {
     display: block;
   }
+
+  .search-option input:checked .checkmark:focus {
+    box-shadow: 0 0 0 3px #ffbf47;
+  }
+
   
   .search-option .checkmark:after {
     left: 4px;

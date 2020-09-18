@@ -19,12 +19,16 @@ export const clearJob = dispatch => () => dispatch({type: "CLEAR_JOB"});
 export const selectJob = dispatch => (job) => dispatch({type:"SELECT_JOB", payload : job});
 
 export const fetchJobs = dispatch => async (cities, locationText, searchText, urlPage, newSearch=true) => {
+    dispatch({type: "START_SEARCH"});
     let url = urlBuilder(cities, locationText, searchText, urlPage);
     try {
         console.log(url);
         const res = await fetch(url);
         const data = await res.json();
         if (newSearch) {
+            if (data.length === 0) {
+                return dispatch({type: "NO_RESULTS"})
+            }
             return dispatch({
                 type: "NEW_DATA",
                 payload : data
