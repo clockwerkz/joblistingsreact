@@ -4,8 +4,8 @@ import ReactPaginate from 'react-paginate';
 
 import Card from './Card';
 
-import { updatePage, fetchJobs } from '../store/actions';
-const SearchResults = ({ results, start, end, updatePage, cities, locationText, searchText, fetchJobs, urlPage, searchStatus }) => {
+import { updatePage, fetchJobs, updateLocationInput } from '../store/actions';
+const SearchResults = ({ results, start, end, updatePage, cities, locationText, updateLocationInput, searchText, fetchJobs, urlPage, searchStatus }) => {
     
     let numberOfPages = Math.ceil(results.length / 5);
     
@@ -38,10 +38,13 @@ const SearchResults = ({ results, start, end, updatePage, cities, locationText, 
         } else {
             geo.getCurrentPosition((geo)=>{
                 console.log(geo.coords);
+                const lat = geo.coords.latitude;
+                const lng = geo.coords.longitude;
+                updateLocationInput({lat, lng});
             });
         }
         //window.scrollTo(0, 0)
-    }, [])
+    },[])
 
     let currentStatusClass;
     switch (searchStatus) {
@@ -78,7 +81,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
     updatePage : updatePage(dispatch),
-    fetchJobs : fetchJobs(dispatch)
+    fetchJobs : fetchJobs(dispatch),
+    updateLocationInput : updateLocationInput(dispatch)
 });
 
 
