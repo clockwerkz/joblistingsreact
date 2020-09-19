@@ -32,7 +32,15 @@ const SearchResults = ({ results, start, end, updatePage, cities, locationText, 
     }
 
     useEffect(() => {
-        window.scrollTo(0, 0)
+        const geo = navigator.geolocation;
+        if (!geo) {
+            console.error("Geolocation is not supported");
+        } else {
+            geo.getCurrentPosition((geo)=>{
+                console.log(geo.coords);
+            });
+        }
+        //window.scrollTo(0, 0)
     }, [])
 
     let currentStatusClass;
