@@ -10,9 +10,9 @@ const Card = ({ id, type, url, created_at, company,company_logo, company_url, lo
     const handleClick = () => {
         selectJob(id);
     }
-    
+    const cardClass = `card card-${index}`
     return (
-        <div className="card" onClick={handleClick}>
+        <div className={cardClass} onClick={handleClick}>
             {company_logo ? <div style={{backgroundImage: `url(${company_logo})`}} className="card__img" /> : <div className="card__img">not found</div>}
                 <div className="card__body">
                     <div className="card__info">
