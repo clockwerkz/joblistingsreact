@@ -1,3 +1,4 @@
+<div style="{background-color: #333; color: #EEE; height: 100%;}">
 <h1>Github Jobs Search</h1>
 <h2>Project Entry from <a href="https://devchallenges.io/challenges/TtUjDt19eIHxNQ4n5jps">Devchallenges.io</a></h2>
 
@@ -12,3 +13,4 @@
 <h2>How to Install</h2>
 <p>To view the project and run it locally, simply click on the download button above or clone the repo. <strong>You will need to have Node/NPM installed</strong>. Once the project is downloaded or cloned, simply run <code>npm install</code> to install all of the node libraries (React, etc). <br>
 <code>npm run start</code> will run the project locally.</p>
+</div>
