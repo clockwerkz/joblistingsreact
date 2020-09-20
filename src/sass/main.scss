@@ -50,7 +50,7 @@ a {
     padding: 1.2rem 1.2rem 2.1rem;
     margin: 2rem 0;
     animation-name: reveal-card;
-    animation-duration: 0.35s;
+    animation-duration: 0.25s;
     animation-timing-function: ease-out;
     animation-fill-mode: forwards;
     &__body {
@@ -121,7 +121,7 @@ a {
 
 @for $i from 0 through 4 {
     .card-#{$i} {
-        $delay : $i / 4;
+        $delay : $i / 8;
         animation-delay: #{$delay}s;
     }
 }
@@ -191,7 +191,8 @@ a {
     &-results {
         width: 65%;
         &__status {
-            font-size: 2rem;
+            font-size: 1.75rem;
+            color: #1E86FF;
             text-align: center;
         }
     }
@@ -491,6 +492,9 @@ a {
         }
         &-results {
             width: 100%;
+            &__status {
+                font-size: 1.5rem;
+            }
         }
     }
     .card {

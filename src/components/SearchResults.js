@@ -32,22 +32,6 @@ const SearchResults = ({ results, start, end, updatePage, cities, locationText, 
         onPageChange : handlePageCick
     }
 
-    useEffect(() => {
-
-        // const geo = navigator.geolocation;
-        // if (!geo) {
-        //     console.error("Geolocation is not supported");
-        // } else {
-        //     geo.getCurrentPosition((geo)=>{
-        //         console.log(geo.coords);
-                //const lat = geo.coords.latitude;
-                //const lng = geo.coords.longitude;
-                //updateLocationInput({lat, lng});
-        //     });
-        // }
-        //window.scrollTo(0, 0)
-    },[])
-
     let currentStatusClass;
     switch (searchStatus) {
         case "Searching...":
