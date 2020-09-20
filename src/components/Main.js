@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import connect from '../utilities/connect';
 
 import SearchHeader from './SearchHeader';
@@ -7,17 +7,6 @@ import SearchResults from './SearchResults';
 import Details from './Details';
 
 const Main = ({ selectedJob }) => {
-    useEffect(()=>{
-        const geo = navigator.geolocation;
-        if (geo) {
-            geo.getCurrentPosition((geo)=>{
-                console.log(geo.coords);
-                const lat = geo.coords.latitude;
-                const lng = geo.coords.longitude;
-                //updateLocationInput({lat, lng});
-            });
-        }
-    }, [])
 
     if (selectedJob === "") {
         return (
