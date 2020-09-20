@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import gsap from "gsap";
+import React from 'react';
 import connect from '../utilities/connect';
 import ReactPaginate from 'react-paginate';
 
