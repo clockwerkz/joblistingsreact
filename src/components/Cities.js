@@ -4,8 +4,12 @@ import { toggleCity } from '../store/actions';
 
 import CheckBox from './CheckBox';
 
-const Cities = ({ cities, toggleCity }) => {
+const Cities = ({ cities, toggleCity, fetchJobs }) => {
     const cityNames = Object.keys(cities);
+    const handleCityClick = (cityName) => {
+        toggleCity(cityName);
+        fetchJobs();
+    };
     return (
         <div className="search__cities">
             {cityNames.map(cityName => (

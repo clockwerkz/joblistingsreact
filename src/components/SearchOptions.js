@@ -6,7 +6,7 @@ import SearchBar from './SearchBar';
 import Cities from './Cities';
 import CheckBox from './CheckBox';
 
-const SearchOptions = ({ cities, fullTime, toggleFullTime, toggleCity, locationText, updateLocationInput}) => {
+const SearchOptions = ({ fullTime, toggleFullTime, fetchJobs, locationText, updateLocationInput}) => {
     return (
         <aside className="search-criteria">
             <CheckBox label="Full Time"value={fullTime} toggle={toggleFullTime}/>
@@ -19,7 +19,7 @@ const SearchOptions = ({ cities, fullTime, toggleFullTime, toggleCity, locationT
                     updateInputValue={updateLocationInput}
                 />
             </div>
-            <Cities  />
+            <Cities  fetchJobs={fetchJobs}/>
         </aside>
     );
 };

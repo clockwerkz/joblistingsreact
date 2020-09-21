@@ -11,12 +11,9 @@ import urlBuilder from '../utilities/urlBuilder';
 
 const Main = ({ selectedJob, startSearch, newData, updateData, noResults, cities, locationText, searchText, urlPage }) => {
     const fetchJobs = async (newSearch=true) => {
-        console.log(newSearch);
-        console.log(startSearch);
-        startSearch();
+        if (newSearch) startSearch();
         let url = urlBuilder(cities, locationText, searchText, urlPage);
         try {
-            console.log(url);
             const res = await fetch(url);
             const data = await res.json();
             if (newSearch) {
@@ -36,7 +33,7 @@ const Main = ({ selectedJob, startSearch, newData, updateData, noResults, cities
             <section className="search">
                 <SearchHeader fetchJobs={fetchJobs}/>
                 <div className="search-body">
-                    <SearchOptions />
+                    <SearchOptions fetchJobs={fetchJobs} />
                     <SearchResults fetchJobs={fetchJobs}/>
                 </div>
             </section>
