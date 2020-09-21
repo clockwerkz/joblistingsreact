@@ -1,12 +1,12 @@
 import React from 'react';
 import connect from '../utilities/connect';
-import { updateSearchInput, fetchJobs } from '../store/actions';
+import { updateSearchInput } from '../store/actions';
 
 import SearchBar from './SearchBar';
 
-const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, urlPage,  fetchJobs }) => {
+const SearchHeader = ({ searchText, updateSearchInput, fetchJobs }) => {
     const searchJobs = () => {
-        fetchJobs(cities, locationText, searchText, 0);
+        fetchJobs();
     }
 
     return (
@@ -26,16 +26,13 @@ const SearchHeader = ({ cities, searchText, locationText, updateSearchInput, url
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        updateSearchInput : updateSearchInput(dispatch),
-        fetchJobs : fetchJobs(dispatch)
+        updateSearchInput : updateSearchInput(dispatch)
     }
 }
 
 const mapStateToProps = (state) => {
     return {
         searchText : state.searchText,
-        locationText : state.locationText,
-        cities : state.cities,
         urlPage : state.urlPage
     }
 }

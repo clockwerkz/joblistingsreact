@@ -3,16 +3,16 @@ import connect from '../utilities/connect';
 import ReactPaginate from 'react-paginate';
 
 import Card from './Card';
+import { updatePage, updateLocationInput } from '../store/actions';
 
-import { updatePage, fetchJobs, updateLocationInput } from '../store/actions';
-const SearchResults = ({ results, start, end, updatePage, cities, locationText, updateLocationInput, searchText, fetchJobs, urlPage, searchStatus }) => {
+const SearchResults = ({ results, start, end, updatePage, fetchJobs, searchStatus }) => {
     
     let numberOfPages = Math.ceil(results.length / 5);
     
     const handlePageCick = ({ selected }) => {
         if (selected + 1 === numberOfPages && numberOfPages % 10 === 0) {
             console.log("End of current set of pages");
-            fetchJobs(cities, locationText, searchText, urlPage, false);
+            fetchJobs(false);
         }
         updatePage(selected);
     }
@@ -56,17 +56,11 @@ const mapStateToProps = (state) => ({
     results : state.results,
     start: state.start,
     end: state.end,
-    cities : state.cities,
-    locationText : state.locationText,
-    searchText : state.searchText,
-    page : state.page,
-    urlPage : state.urlPage,
     searchStatus : state.searchStatus
 })
 
 const mapDispatchToProps = (dispatch) => ({
     updatePage : updatePage(dispatch),
-    fetchJobs : fetchJobs(dispatch),
     updateLocationInput : updateLocationInput(dispatch)
 });
 
