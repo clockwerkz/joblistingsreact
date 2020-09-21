@@ -8,7 +8,6 @@ const Cities = ({ cities, toggleCity, fetchJobs }) => {
     const cityNames = Object.keys(cities);
     const handleCityClick = (cityName) => {
         toggleCity(cityName);
-        fetchJobs();
     };
     return (
         <div className="search__cities">
@@ -18,7 +17,7 @@ const Cities = ({ cities, toggleCity, fetchJobs }) => {
                 key={cityName} 
                 label={cityName} 
                 value={cities[cityName]}
-                toggle={toggleCity} 
+                toggle={handleCityClick} 
             />))}
         </div>
     )
