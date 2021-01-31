@@ -25,6 +25,7 @@ const Main = ({ selectedJob, startSearch, newData, updateData, noResults, cities
             return updateData(data);
         } catch (err) {
             console.error('Error:', err);
+            noResults();
         }
     }
 
