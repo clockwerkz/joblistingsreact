@@ -12,7 +12,7 @@
     <li>Check out the project here: <a href="https://joblistingsreact.netlify.app/">Github Jobs Challenge</a>
     </li>
 </ol>
-
+<p>You can read about the additional step to clicking on the demo button here: <a href="https://github.com/Rob--W/cors-anywhere/issues/301">Issue #301</a></p>
 
 <p style="{text-align:center;}">
 <img src="projectImages/desktop_search.PNG" />
