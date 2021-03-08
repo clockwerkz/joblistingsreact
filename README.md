@@ -5,6 +5,7 @@
 <h2>Project Details</h2>
 <p>The Github Jobs API Project is a challenge to build an interface to utilize the Github Jobs API endpoint. The API provides the abilities to custom tailor searches based on various criteria (location, description, full-time, etc). API results are limited to a maximum of 50 jobs returned per query, with the ability to use pagination to fetch more.</p>
 <h2>Live Demo</h2>
+<a href="https://joblistingsreact.netlify.app/" target="_blank">Github Jobs API Challenge</a><br>
 <p>Please Note: I use my own cors-anywhere implementation as a way to proxy calls to the Github API (as the project challenge had suggested). My proxy is hosted on heroku, <strong>so your first search may make a few seconds to spin up.</strong></p>
 
 <p style="{text-align:center;}">
